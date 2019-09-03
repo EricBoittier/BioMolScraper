@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>   </title>
+</head>
+<body>
+
+<script src="ngl.js"></script>
+
+{% for pdb in obj.ordered_pdbs_by_available_residues %}
+
+<b> {{ pdb }} </b>
+<br>
+<p> {{ pdbs[pdb]["title"] }} </p>
+<p> resolution: {{ pdbs[pdb]["resolution"] }} </p>
+<p> chains: {{ pdbs[pdb]["chains"] }} </p>
+<p> residues: {{ pdbs[pdb]["residues"] }} </p>
+<p> {{ pdbs[pdb]["journal_title"] }} </p>
+<p> {{ pdbs[pdb]["reference"] }} </p>
+<p> <a href="https://doi.org/{{ pdbs[pdb]['doi'] }}"> {{ pdbs[pdb]["doi"] }} </a>  </p>
+<p> <a href="https://www.rcsb.org/structure/{{ pdb }}"> RCSB: {{ pdb  }} </a>  </p>
+
+{% endfor %}
+
+</body>
+</html>

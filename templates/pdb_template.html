@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>   </title>
+</head>
+<body>
+
+<script src="ngl.js"></script>
+
+
+<br>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      var stage = new NGL.Stage("viewport{{ pdb }}");
+      stage.loadFile("rcsb://{{ pdb }}", {defaultRepresentation: true});
+    });
+  </script>
+  <div id="viewport{{ pdb }}" style="width:400px; height:300px;"></div>
+
+<br>
+
+
+</body>
+</html>
