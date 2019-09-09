@@ -12,7 +12,14 @@ def make_index_template(BioMolScraper):
 
 	t = Template(s)
 
-	return t.render(obj=BioMolScraper, pdbs=BioMolScraper.pdbs)
+	two_or_more = []
+	for pdb in BioMolScraper.ordered_pdbs_by_available_residues:
+		print(BioMolScraper.pdbs[pdb]["molecules"])
+		if len(BioMolScraper.pdbs[pdb]["molecules"]) >= 2:
+			two_or_more.append(pdb)
+
+
+	return t.render(obj=BioMolScraper, pdbs=BioMolScraper.pdbs, two_or_more=two_or_more)
 
 def make_pdb_template(pdb):
 

@@ -26,12 +26,11 @@ class BioMolScraper(object):
 		df.to_csv(path_or_buf="./csv.csv")
 
 
-
-
 	def add_pdb_info(self):
 		for pdb in self.pdbs.keys():
 
 			self.pdbs[pdb]["organism"] = []
+			self.pdbs[pdb]["molecules"] = []
 			self.pdbs[pdb]["reference"] = None
 			self.pdbs[pdb]["doi"] = None
 			self.pdbs[pdb]["journal_title"] = ""
@@ -41,6 +40,9 @@ class BioMolScraper(object):
 			lines = tmp.readlines()
 
 			for line in lines:
+				if line.__contains__(" MOLECULE:"):
+					self.pdbs[pdb]["molecules"].append(line)
+
 				if line.startswith("TITLE"):
 					self.pdbs[pdb]["title"] += line
 
@@ -100,6 +102,8 @@ class BioMolScraper(object):
 b = BioMolScraper("P53350")
 
 output = open("{}.html".format(b.uniprot_id), "w")
+
+
 
 output.write(make_index_template(b))
 
