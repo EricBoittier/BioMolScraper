@@ -96,11 +96,11 @@ class BioMolScraper(object):
                 self.pdbs[p[number - 1].text_content()] = tmp
 
 
-uniprot_ids = ["P53350"]
+uniprot_ids = ["P28907"]
 
-for x in open("bast_output.txt", "r").readlines():
-    if x.__contains__(">"):
-        uniprot_ids.append(x.split(">")[1].split("|")[0].strip())
+# for x in open("bast_output.txt", "r").readlines():
+#     if x.__contains__(">"):
+#         uniprot_ids.append(x.split(">")[1].split("|")[0].strip())
 
 # uniprot_ids.remove("3bzi")
 
